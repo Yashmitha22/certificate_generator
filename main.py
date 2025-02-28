@@ -13,7 +13,7 @@ participants = [
 def generate_certificate(name, college):
     template = cv2.imread(TEMPLATE_PATH)
     if template is None:
-        print("Error: Certificate template not found!")
+        print("Error: Certificate template will not be found!")
         return None
     name_position = (600, 548)   
     college_position = (39, 616)
