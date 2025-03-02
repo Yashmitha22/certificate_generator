@@ -7,7 +7,7 @@ OUTPUT_DIR = "generate_certificate"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 participants = [
     
-    {"name": "ABC", "college": " Engineering and Technology"},
+    {"name": "abc", "college": "xyz"},
 ]
 
 def generate_certificate(name, college):
