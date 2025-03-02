@@ -7,7 +7,7 @@ OUTPUT_DIR = "generate_certificate"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 participants = [
     
-    {"name": "ABHISHEK B GALATAGI", "college": "KLS Vishwanathrao Deshpande Institute of Technology"},
+    {"name": "ABC", "college": " Engineering and Technology"},
 ]
 
 def generate_certificate(name, college):
@@ -20,7 +20,6 @@ def generate_certificate(name, college):
 
     cv2.putText(template, name, name_position, cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 0), 2, cv2.LINE_AA)
 
-    # ✅ If college name is too long, split it into two lines
     max_length = 100  
     if len(college) > max_length:
         words = college.split()
@@ -33,21 +32,20 @@ def generate_certificate(name, college):
     else:
         cv2.putText(template, college, college_position, cv2.FONT_HERSHEY_COMPLEX, 1, (0, 0, 0), 2, cv2.LINE_AA)
 
-    # ✅ Save the generated certificate as an image
+    
     img_path = os.path.join(OUTPUT_DIR, f"{name}.jpg")
     cv2.imwrite(img_path, template)
     
-    # ✅ Convert the image to PDF (Landscape Format)
+    
     pdf_path = os.path.join(OUTPUT_DIR, f"{name}.pdf")
-    pdf = FPDF(orientation="L", unit="mm", format="A4")  # "L" for Landscape mode
+    pdf = FPDF(orientation="L", unit="mm", format="A4")  
     pdf.add_page()
-    pdf.image(img_path, x=0, y=0, w=297, h=210)  # Adjust width/height for landscape A4
+    pdf.image(img_path, x=0, y=0, w=297, h=210)  
     pdf.output(pdf_path)
 
     print(f"✅ Certificate generated for {name} in PDF landscape format")
     return pdf_path
 
-# ✅ Generate certificates
 for participant in participants:
     generate_certificate(participant["name"], participant["college"])
 
